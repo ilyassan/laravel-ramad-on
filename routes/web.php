@@ -15,6 +15,10 @@ Route::get('/recipes/create', function () {
     return view('recipes.create');
 });
 
+Route::get('/recipes/{id}', function () {
+    return view('recipes.show');
+});
+
 Route::get('/experiences', function () {
     return view('experiences.index');
 });
