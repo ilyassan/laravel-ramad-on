@@ -144,5 +144,40 @@
                 </div>
             </div>
         </footer>
+
+        <!-- Include SweetAlert2 only once -->
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        @if (isset($error))
+            <script>
+                let message = "{{ $error }}";
+                Swal.fire({
+                    icon: "error",
+                    title: "Error",
+                    text: message
+                });
+            </script>
+        @endif
+
+        @if (isset($success))
+            <script>
+                let message = "{{ $success }}";
+                Swal.fire({
+                    icon: "success",
+                    title: "Success",
+                    text: message
+                });
+            </script>
+        @endif
+
+        @if (isset($warning))
+            <script>
+                let message = "{{ $warning }}";
+                Swal.fire({
+                    icon: "warning",
+                    title: "Warning",
+                    text: message
+                });
+            </script>
+        @endif
     </body>
 </html>
