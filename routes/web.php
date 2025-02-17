@@ -11,6 +11,10 @@ Route::get('/recipes', function () {
     return view('recipes.index');
 });
 
+Route::get('/recipes/create', function () {
+    return view('recipes.create');
+});
+
 Route::get('/experiences', function () {
     return view('experiences.index');
 });
