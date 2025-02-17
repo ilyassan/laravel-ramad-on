@@ -17,4 +17,14 @@ class Comment extends Model
         'recipe_id',
         'experience_id',
     ];
+
+    public function recipe()
+    {
+        return $this->belongsTo(Recipe::class);
+    }
+
+    public function experience()
+    {
+        return $this->belongsTo(Experience::class);
+    }
 }

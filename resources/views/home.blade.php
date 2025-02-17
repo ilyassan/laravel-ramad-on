@@ -29,28 +29,28 @@
                     <div class="text-purple-600 mb-4">
                         <i class="fas fa-users text-3xl"></i>
                     </div>
-                    <h3 class="text-4xl font-bold text-gray-900">5,280</h3>
+                    <h3 class="text-4xl font-bold text-gray-900">{{ $usersCount }}</h3>
                     <p class="text-gray-700 mt-2">Membres actifs</p>
                 </div>
                 <div class="bg-purple-50 rounded-xl p-6 shadow-sm hover:shadow-md transition duration-300">
                     <div class="text-purple-600 mb-4">
                         <i class="fas fa-book-open text-3xl"></i>
                     </div>
-                    <h3 class="text-4xl font-bold text-gray-900">1,543</h3>
+                    <h3 class="text-4xl font-bold text-gray-900">{{ $experiencesCount }}</h3>
                     <p class="text-gray-700 mt-2">Expériences partagées</p>
                 </div>
                 <div class="bg-purple-50 rounded-xl p-6 shadow-sm hover:shadow-md transition duration-300">
                     <div class="text-purple-600 mb-4">
                         <i class="fas fa-utensils text-3xl"></i>
                     </div>
-                    <h3 class="text-4xl font-bold text-gray-900">872</h3>
+                    <h3 class="text-4xl font-bold text-gray-900">{{ $recipesCount }}</h3>
                     <p class="text-gray-700 mt-2">Recettes publiées</p>
                 </div>
                 <div class="bg-purple-50 rounded-xl p-6 shadow-sm hover:shadow-md transition duration-300">
                     <div class="text-purple-600 mb-4">
                         <i class="fas fa-comment text-3xl"></i>
                     </div>
-                    <h3 class="text-4xl font-bold text-gray-900">12,390</h3>
+                    <h3 class="text-4xl font-bold text-gray-900">{{ $commentsCount }}</h3>
                     <p class="text-gray-700 mt-2">Commentaires</p>
                 </div>
             </div>
@@ -65,83 +65,30 @@
                 <p class="text-lg text-gray-700 max-w-2xl mx-auto">Découvrez les témoignages inspirants de notre communauté pendant le Ramadan</p>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Experience Card 1 -->
-                <div class="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-lg transition duration-300">
-                    <img src="/api/placeholder/400/300" alt="Experience 1" class="w-full h-48 object-cover">
-                    <div class="p-6">
-                        <div class="flex items-center mb-4">
-                            <img src="/api/placeholder/40/40" alt="User" class="w-10 h-10 rounded-full">
-                            <div class="ml-3">
-                                <h4 class="text-sm font-semibold text-gray-900">Ahmed Benali</h4>
-                                <p class="text-xs text-gray-600">Il y a 2 jours</p>
+                @foreach ($latestExperiences as $experience)
+                    <div class="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-lg transition duration-300">
+                        <img src="https://placehold.co/400x300" alt="Experience 1" class="w-full h-48 object-cover">
+                        <div class="p-6">
+                            <div class="flex items-center mb-4">
+                                <img src="https://placehold.co/40x40" alt="User" class="w-10 h-10 rounded-full">
+                                <div class="ml-3">
+                                    <h4 class="text-sm font-semibold text-gray-900">{{ $experience->user->getName() }}</h4>
+                                    <p class="text-xs text-gray-600">
+                                        {{ \Carbon\Carbon::parse($experience->created_at)->diffForHumans() }}
+                                    </p>
+                                </div>
+                            </div>
+                            <h3 class="text-xl font-semibold text-gray-900 mb-2">{{ $experience->getTitle() }}</h3>
+                            <p class="text-gray-700 mb-4">{{ Str::limit($experience->getDescription(), 97) }}...</p>
+                            <div class="flex items-center justify-between">
+                                <a href="{{ route('experiences.show', $experience->getPrimaryKey()) }}" class="text-purple-700 hover:text-purple-800 font-medium text-sm">Lire la suite</a>
                             </div>
                         </div>
-                        <h3 class="text-xl font-semibold text-gray-900 mb-2">Ma première nuit de Tarawih</h3>
-                        <p class="text-gray-700 mb-4">Je partage avec vous mon expérience lors de ma première nuit de prière de Tarawih cette année...</p>
-                        <div class="flex items-center justify-between">
-                            <span class="text-purple-600 flex items-center">
-                                <i class="fas fa-heart mr-1"></i> 128
-                            </span>
-                            <span class="text-gray-600 flex items-center">
-                                <i class="fas fa-comment mr-1"></i> 32
-                            </span>
-                            <a href="#" class="text-purple-700 hover:text-purple-800 font-medium text-sm">Lire la suite</a>
-                        </div>
                     </div>
-                </div>
-                
-                <!-- Experience Card 2 -->
-                <div class="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-lg transition duration-300">
-                    <img src="/api/placeholder/400/300" alt="Experience 2" class="w-full h-48 object-cover">
-                    <div class="p-6">
-                        <div class="flex items-center mb-4">
-                            <img src="/api/placeholder/40/40" alt="User" class="w-10 h-10 rounded-full">
-                            <div class="ml-3">
-                                <h4 class="text-sm font-semibold text-gray-900">Fatima Zahra</h4>
-                                <p class="text-xs text-gray-600">Il y a 3 jours</p>
-                            </div>
-                        </div>
-                        <h3 class="text-xl font-semibold text-gray-900 mb-2">Comment j'ai appris à gérer mon temps</h3>
-                        <p class="text-gray-700 mb-4">Entre le travail, la famille et les obligations spirituelles, voici comment j'organise mes journées...</p>
-                        <div class="flex items-center justify-between">
-                            <span class="text-purple-600 flex items-center">
-                                <i class="fas fa-heart mr-1"></i> 195
-                            </span>
-                            <span class="text-gray-600 flex items-center">
-                                <i class="fas fa-comment mr-1"></i> 47
-                            </span>
-                            <a href="#" class="text-purple-700 hover:text-purple-800 font-medium text-sm">Lire la suite</a>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Experience Card 3 -->
-                <div class="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-lg transition duration-300">
-                    <img src="/api/placeholder/400/300" alt="Experience 3" class="w-full h-48 object-cover">
-                    <div class="p-6">
-                        <div class="flex items-center mb-4">
-                            <img src="/api/placeholder/40/40" alt="User" class="w-10 h-10 rounded-full">
-                            <div class="ml-3">
-                                <h4 class="text-sm font-semibold text-gray-900">Karim Tazi</h4>
-                                <p class="text-xs text-gray-600">Il y a 5 jours</p>
-                            </div>
-                        </div>
-                        <h3 class="text-xl font-semibold text-gray-900 mb-2">La solidarité pendant le Ramadan</h3>
-                        <p class="text-gray-700 mb-4">Mon expérience de bénévolat auprès des personnes démunies durant ce mois béni...</p>
-                        <div class="flex items-center justify-between">
-                            <span class="text-purple-600 flex items-center">
-                                <i class="fas fa-heart mr-1"></i> 267
-                            </span>
-                            <span class="text-gray-600 flex items-center">
-                                <i class="fas fa-comment mr-1"></i> 56
-                            </span>
-                            <a href="#" class="text-purple-700 hover:text-purple-800 font-medium text-sm">Lire la suite</a>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
             </div>
             <div class="text-center mt-10">
-                <a href="#" class="inline-flex items-center text-purple-700 hover:text-purple-800 font-semibold">
+                <a href="{{ route('experiences.index') }}" class="inline-flex items-center text-purple-700 hover:text-purple-800 font-semibold">
                     Voir plus d'expériences
                     <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
@@ -159,103 +106,24 @@
                 <p class="text-lg text-gray-700 max-w-2xl mx-auto">Explorez nos meilleures recettes pour l'Iftar et le Suhoor</p>
             </div>
             
-            <!-- Recipe Categories Filter -->
-            <div class="flex flex-wrap justify-center mb-10 space-x-2 space-y-2 md:space-y-0">
-                <button class="bg-purple-600 text-white px-4 py-2 rounded-md text-sm font-medium">Toutes</button>
-                <button class="bg-white text-purple-700 border border-purple-200 hover:bg-purple-50 px-4 py-2 rounded-md text-sm font-medium">Entrées</button>
-                <button class="bg-white text-purple-700 border border-purple-200 hover:bg-purple-50 px-4 py-2 rounded-md text-sm font-medium">Plats principaux</button>
-                <button class="bg-white text-purple-700 border border-purple-200 hover:bg-purple-50 px-4 py-2 rounded-md text-sm font-medium">Desserts</button>
-                <button class="bg-white text-purple-700 border border-purple-200 hover:bg-purple-50 px-4 py-2 rounded-md text-sm font-medium">Boissons</button>
-            </div>
-            
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Recipe Card 1 -->
-                <div class="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-lg transition duration-300">
-                    <div class="relative">
-                        <img src="/api/placeholder/400/250" alt="Recipe 1" class="w-full h-56 object-cover">
-                        <span class="absolute top-4 right-4 bg-purple-600 text-white text-xs font-semibold px-2 py-1 rounded">Entrée</span>
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-semibold text-gray-900 mb-2">Harira traditionnelle</h3>
-                        <div class="flex items-center mb-4">
-                            <div class="flex text-yellow-400">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star-half-alt"></i>
-                            </div>
-                            <span class="text-gray-600 text-sm ml-2">(128 avis)</span>
+                @foreach ($latestRecipes as $recipe)
+                    <div class="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-lg transition duration-300">
+                        <div class="relative">
+                            <img src="https://placehold.co/400x300" alt="Recipe 1" class="w-full h-56 object-cover">
+                            <span class="absolute top-4 right-4 bg-purple-600 text-white text-xs font-semibold px-2 py-1 rounded">Entrée</span>
                         </div>
-                        <p class="text-gray-700 mb-4">Une recette authentique de harira, la soupe traditionnelle pour rompre le jeûne...</p>
-                        <div class="flex items-center text-sm text-gray-600 mb-4">
-                            <i class="far fa-clock mr-2"></i> 45 minutes
-                            <span class="mx-3">|</span>
-                            <i class="fas fa-utensils mr-2"></i> 6 personnes
+                        <div class="p-6">
+                            <h3 class="text-xl font-semibold text-gray-900 mb-2">{{ $recipe->getTitle() }}</h3>
+                            <p class="text-gray-700 mb-4">{{ Str::limit($recipe->getDescription(), 97) }}...</p>
+                            <a href="{{ route('recipes.show', $recipe->getPrimaryKey()) }}" class="block w-full bg-purple-100 hover:bg-purple-200 text-purple-700 text-center py-2 rounded-md font-medium transition duration-150 ease-in-out">Voir la recette</a>
                         </div>
-                        <a href="#" class="block w-full bg-purple-100 hover:bg-purple-200 text-purple-700 text-center py-2 rounded-md font-medium transition duration-150 ease-in-out">Voir la recette</a>
                     </div>
-                </div>
-                
-                <!-- Recipe Card 2 -->
-                <div class="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-lg transition duration-300">
-                    <div class="relative">
-                        <img src="/api/placeholder/400/250" alt="Recipe 2" class="w-full h-56 object-cover">
-                        <span class="absolute top-4 right-4 bg-purple-600 text-white text-xs font-semibold px-2 py-1 rounded">Plat principal</span>
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-semibold text-gray-900 mb-2">Tajine d'agneau aux pruneaux</h3>
-                        <div class="flex items-center mb-4">
-                            <div class="flex text-yellow-400">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                            </div>
-                            <span class="text-gray-600 text-sm ml-2">(195 avis)</span>
-                        </div>
-                        <p class="text-gray-700 mb-4">Un tajine savoureux qui mêle le sucré et le salé, parfait pour un Iftar spécial...</p>
-                        <div class="flex items-center text-sm text-gray-600 mb-4">
-                            <i class="far fa-clock mr-2"></i> 1h30
-                            <span class="mx-3">|</span>
-                            <i class="fas fa-utensils mr-2"></i> 8 personnes
-                        </div>
-                        <a href="#" class="block w-full bg-purple-100 hover:bg-purple-200 text-purple-700 text-center py-2 rounded-md font-medium transition duration-150 ease-in-out">Voir la recette</a>
-                    </div>
-                </div>
-                
-                <!-- Recipe Card 3 -->
-                <div class="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-lg transition duration-300">
-                    <div class="relative">
-                        <img src="/api/placeholder/400/250" alt="Recipe 3" class="w-full h-56 object-cover">
-                        <span class="absolute top-4 right-4 bg-purple-600 text-white text-xs font-semibold px-2 py-1 rounded">Dessert</span>
-                    </div>
-                    <div class="p-6">
-                        <h3 class="text-xl font-semibold text-gray-900 mb-2">Chebakia au miel</h3>
-                        <div class="flex items-center mb-4">
-                            <div class="flex text-yellow-400">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="far fa-star"></i>
-                            </div>
-                            <span class="text-gray-600 text-sm ml-2">(87 avis)</span>
-                        </div>
-                        <p class="text-gray-700 mb-4">La recette authentique de ce gâteau traditionnel adoré pendant le Ramadan...</p>
-                        <div class="flex items-center text-sm text-gray-600 mb-4">
-                            <i class="far fa-clock mr-2"></i> 2h
-                            <span class="mx-3">|</span>
-                            <i class="fas fa-utensils mr-2"></i> 30 pièces
-                        </div>
-                        <a href="#" class="block w-full bg-purple-100 hover:bg-purple-200 text-purple-700 text-center py-2 rounded-md font-medium transition duration-150 ease-in-out">Voir la recette</a>
-                    </div>
-                </div>
+                @endforeach
             </div>
             
             <div class="text-center mt-10">
-                <a href="#" class="inline-flex items-center text-purple-700 hover:text-purple-800 font-semibold">
+                <a href="{{ route('recipes.index') }}" class="inline-flex items-center text-purple-700 hover:text-purple-800 font-semibold">
                     Découvrir plus de recettes
                     <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
