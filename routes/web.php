@@ -15,6 +15,10 @@ Route::get('/experiences/create', function () {
     return view('experiences.create');
 });
 
+Route::get('/experiences/{id}', function () {
+    return view('experiences.show');
+});
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
