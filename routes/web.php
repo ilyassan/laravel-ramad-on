@@ -8,7 +8,11 @@ Route::get('/', function () {
 });
 
 Route::get('/experiences', function () {
-    return view('experiences');
+    return view('experiences.index');
+});
+
+Route::get('/experiences/create', function () {
+    return view('experiences.create');
 });
 
 Route::get('/dashboard', function () {
