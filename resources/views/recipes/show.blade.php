@@ -1,5 +1,5 @@
 <x-app-layout>
-    <x-slot:title> Home </x-slot>
+    <x-slot:title> Recipe Details </x-slot>
 
     @if ($errors->any())
         <x-slot:error>{{ $errors->first() }}</x-slot> 
@@ -61,7 +61,7 @@
                             </div>
                             <button class="flex items-center space-x-2 text-purple-600 hover:text-purple-800 transition-colors">
                                 <i class="fas fa-share-alt text-lg"></i>
-                                <span class="font-medium">Partager</span>
+                                <span class="font-medium">Share</span>
                             </button>
                         </div>
                     </div>
@@ -69,7 +69,7 @@
 
                 <!-- Comments Section -->
                 <div class="mt-12 bg-white rounded-2xl shadow-lg p-6 md:p-8">
-                    <h2 class="text-2xl font-bold text-gray-900 mb-8">Commentaires</h2>
+                    <h2 class="text-2xl font-bold text-gray-900 mb-8">Comments</h2>
                     
                     <!-- New Comment Form -->
                     <form action="{{ route('comments.store') }}" method="POST" class="mb-8">
@@ -89,7 +89,7 @@
                                 <div class="mt-3 text-right">
                                     <button type="submit" 
                                             class="px-6 py-2.5 bg-purple-600 text-white font-medium rounded-xl hover:bg-purple-700 focus:ring-4 focus:ring-purple-200 transition-all">
-                                        Publier le commentaire
+                                        Publish
                                     </button>
                                 </div>
                             </div>

@@ -5,9 +5,9 @@
     <section class="pt-24 pb-12 md:pt-32 md:pb-24 bg-gradient-to-r from-purple-50 to-purple-100">
         <div class="container mx-auto px-4 md:px-6 lg:px-8">
             <div class="text-center">
-                <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight mb-4">Recettes du <span class="text-purple-700">Ramadan 2025</span></h1>
-                <p class="text-lg text-gray-700 max-w-2xl mx-auto mb-8">Découvrez et partagez des recettes délicieuses pour l'iftar et le suhoor. De l'entrée au dessert, trouvez l'inspiration pour vos repas du Ramadan.</p>
-                <button class="bg-purple-600 hover:bg-purple-700 text-white px-6 py-3 rounded-lg text-lg font-semibold transition duration-150 ease-in-out shadow-lg">Ajouter une recette</button>
+                <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight mb-4">Recipes of <span class="text-purple-700">Ramadan 2025</span></h1>
+                <p class="text-lg text-gray-700 max-w-2xl mx-auto mb-8">Discover and share delicious recipes for the Iftar and Suhoor. De l'entrée au dessert, Find your inspiration for your recipes in Ramadan.</p>
+                <a href="{{ route('recipes.create') }}" class="bg-purple-600 hover:bg-purple-700 text-white px-6 py-3 rounded-lg text-lg font-semibold transition duration-150 ease-in-out shadow-lg">Add your recipe</a>
             </div>
         </div>
     </section>
@@ -17,7 +17,7 @@
         <div class="container mx-auto px-4 md:px-6 lg:px-8">
             <!-- Category Filter -->
             <div class="mb-12">
-                <h2 class="text-2xl font-bold text-gray-900 mb-4">Filtrer par catégorie</h2>
+                <h2 class="text-2xl font-bold text-gray-900 mb-4">Filter by Category</h2>
                 <div class="flex flex-wrap gap-4" id="categoryFilter">
                     @php
                         function isActive($category_id){

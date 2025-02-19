@@ -36,7 +36,7 @@
                         </div>
                     </form>
                     <p class="text-center text-gray-600 text-sm">
-                        Already have an account? <a href="login.html" class="text-purple-600 hover:text-purple-800">Log in</a>
+                        Already have an account? <a href="{{ route('login') }}" class="text-purple-600 hover:text-purple-800">Log in</a>
                     </p>
                 </div>
             </div>

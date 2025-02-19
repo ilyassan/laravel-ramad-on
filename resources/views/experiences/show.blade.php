@@ -16,7 +16,7 @@
                         <div class="flex flex-col md:flex-row md:items-center md:justify-between">
                             <div class="flex-1">
                                 <div class="inline-block px-3 py-1 rounded-full text-sm font-medium text-purple-600 bg-purple-50">
-                                    Expérience Ramadan
+                                    Ramadan Experience
                                 </div>
                                 <h1 class="mt-3 text-3xl md:text-4xl font-bold text-gray-900">
                                     {{ $experience->getTitle() }}

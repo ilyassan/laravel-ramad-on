@@ -26,14 +26,14 @@
                                 Home
                             </a>
                             <a href="{{ route('experiences.index') }}"
-                               class="{{ Request::routeIs('experiences.index') ? 'text-purple-600' : 'text-gray-700 hover:text-purple-600' }} px-3 py-2 rounded-md text-sm font-medium">
+                               class="{{ Request::routeIs('experiences.*') ? 'text-purple-600' : 'text-gray-700 hover:text-purple-600' }} px-3 py-2 rounded-md text-sm font-medium">
                                 Experiences
                             </a>
                             <a href="{{ route('recipes.index') }}"
-                               class="{{ Request::routeIs('recipes.index') ? 'text-purple-600' : 'text-gray-700 hover:text-purple-600' }} px-3 py-2 rounded-md text-sm font-medium">
+                               class="{{ Request::routeIs('recipes.*') ? 'text-purple-600' : 'text-gray-700 hover:text-purple-600' }} px-3 py-2 rounded-md text-sm font-medium">
                                 Recipes
                             </a>
-                            
+
                             @auth
                                 <form action="{{ route('logout') }}" method="POST" class="inline">
                                     @csrf

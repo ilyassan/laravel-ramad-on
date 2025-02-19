@@ -5,9 +5,15 @@
     <section class="pt-24 pb-12 md:pt-32 md:pb-24 bg-gradient-to-r from-purple-50 to-purple-100">
         <div class="container mx-auto px-4 md:px-6 lg:px-8">
             <div class="text-center">
-                <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight mb-4">Expériences du <span class="text-purple-700">Ramadan 2025</span></h1>
-                <p class="text-lg text-gray-700 max-w-2xl mx-auto mb-8">Découvrez et partagez des moments inspirants, des réflexions profondes et des histoires touchantes de notre communauté pendant ce mois sacré.</p>
-                <button class="bg-purple-600 hover:bg-purple-700 text-white px-6 py-3 rounded-lg text-lg font-semibold transition duration-150 ease-in-out shadow-lg">Ajouter votre expérience</button>
+                <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight mb-4">
+                    Experiences of <span class="text-purple-700">Ramadan 2025</span>
+                </h1>
+                <p class="text-lg text-gray-700 max-w-2xl mx-auto mb-8">
+                    Discover and share inspiring moments, deep reflections, and touching stories from our community during this sacred month.
+                </p>
+                <a href="{{ route('experiences.create') }}" class="bg-purple-600 hover:bg-purple-700 text-white px-6 py-3 rounded-lg text-lg font-semibold transition duration-150 ease-in-out shadow-lg">
+                    Add Your Experience
+                </a>
             </div>
         </div>
     </section>
