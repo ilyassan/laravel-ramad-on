@@ -25,9 +25,7 @@ Route::get('/experiences/create', [ExperienceController::class, 'create'])->name
 
 Route::middleware('auth')->post('/experiences/store', [ExperienceController::class, 'store'])->name("experiences.store");
 
-Route::get('/experiences/{id}', function () {
-    return view('experiences.show');
-})->name("experiences.show");
+Route::get('/experiences/{id}', [ExperienceController::class, 'show'])->name("experiences.show");
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
