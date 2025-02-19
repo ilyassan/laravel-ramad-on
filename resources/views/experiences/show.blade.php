@@ -1,5 +1,9 @@
 <x-app-layout>
     <x-slot:title> Home </x-slot>
+
+    @if ($errors->any())
+        <x-slot:error>{{ $errors->first() }}</x-slot> 
+    @endif
     
     <!-- Hero Section with Experience Details -->
     <section class="min-h-[50vh] pt-16 pb-12 md:pt-24 md:pb-16 bg-gradient-to-br from-purple-50 via-purple-100 to-white">
@@ -68,14 +72,17 @@
                     <h2 class="text-2xl font-bold text-gray-900 mb-8">Commentaires</h2>
                     
                     <!-- New Comment Form -->
-                    <form id="commentForm" class="mb-8">
+                    <form action="{{ route('comments.store') }}" method="POST" class="mb-8">
+                        @method("POST")
+                        @csrf
+                        <input type="hidden" name="experience_id" value="{{ $experience->getPrimaryKey() }}">
                         <div class="flex items-start space-x-4">
                             <img class="h-12 w-12 rounded-full border-2 border-purple-100" 
                                  src="https://placehold.co/40x40" 
                                  alt="Your Avatar">
                             <div class="flex-1">
                                 <textarea id="comment" 
-                                          name="comment" 
+                                          name="content" 
                                           rows="3" 
                                           class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-shadow" 
                                           placeholder="Ajoutez un commentaire..."></textarea>

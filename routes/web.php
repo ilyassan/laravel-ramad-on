@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CommentController;
 use App\Http\Controllers\ExperienceController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
@@ -26,6 +27,8 @@ Route::get('/experiences/create', [ExperienceController::class, 'create'])->name
 Route::middleware('auth')->post('/experiences/store', [ExperienceController::class, 'store'])->name("experiences.store");
 
 Route::get('/experiences/{id}', [ExperienceController::class, 'show'])->name("experiences.show");
+
+Route::middleware("auth")->post('/comments/store', [CommentController::class, 'store'])->name("comments.store");
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
