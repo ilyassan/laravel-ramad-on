@@ -13,9 +13,7 @@ Route::get('/recipes', [RecipeController::class, "index"])->name("recipes.index"
 
 Route::get('/recipes/create', [RecipeController::class, "create"])->name("recipes.create");
 
-Route::get('/recipes/{id}', function () {
-    return view('recipes.show');
-})->name("recipes.show");
+Route::get('/recipes/{id}', [RecipeController::class, "show"])->name("recipes.show");
 
 Route::get('/experiences', [ExperienceController::class, 'index'])->name("experiences.index");
 

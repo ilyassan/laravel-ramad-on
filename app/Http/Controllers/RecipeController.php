@@ -24,6 +24,16 @@ class RecipeController extends Controller
 
         return view("recipes.index", compact("recipes", "categories"));
     }
+
+    public function show($id)
+    {
+        $recipe = Recipe::with(["comments" => function ($query){
+            $query->latest();
+        }, "comments.user"])->find($id);
+        
+        return view("recipes.show", compact("recipe"));
+    }
+
     public function create()
     {
         $categories = Category::all();
