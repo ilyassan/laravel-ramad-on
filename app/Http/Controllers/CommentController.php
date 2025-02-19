@@ -10,10 +10,18 @@ class CommentController extends Controller
 {
     public function store(Request $request)
     {
+        // i want this function to be able to store comments for both experiences and recipes
         $data = $request->validate([
-            "content" => "required|min:1",
-            "experience_id" => "required|exists:experiences,id"
+            "content" => "required|min:1"
         ]);
+
+        if ($request->has("experience_id")){
+            $data["experience_id"] = $request->get("experience_id");
+        }
+        else{
+            $data["recipe_id"] = $request->get("recipe_id");
+        }
+
 
         $data["user_id"] = Auth::id();
 
