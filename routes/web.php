@@ -4,6 +4,7 @@ use App\Http\Controllers\CommentController;
 use App\Http\Controllers\ExperienceController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\RecipeController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', HomeController::class)->name("home");
@@ -12,9 +13,7 @@ Route::get('/recipes', function () {
     return view('recipes.index');
 })->name("recipes.index");
 
-Route::get('/recipes/create', function () {
-    return view('recipes.create');
-})->name("recipes.create");
+Route::get('/recipes/create', [RecipeController::class, "create"])->name("recipes.create");
 
 Route::get('/recipes/{id}', function () {
     return view('recipes.show');
@@ -25,6 +24,7 @@ Route::get('/experiences', [ExperienceController::class, 'index'])->name("experi
 Route::get('/experiences/create', [ExperienceController::class, 'create'])->name("experiences.create");
 
 Route::middleware('auth')->post('/experiences/store', [ExperienceController::class, 'store'])->name("experiences.store");
+Route::middleware('auth')->post('/recipes/store', [RecipeController::class, 'store'])->name("recipes.store");
 
 Route::get('/experiences/{id}', [ExperienceController::class, 'show'])->name("experiences.show");
 
