@@ -9,9 +9,19 @@ use Illuminate\Support\Facades\Auth;
 class ExperienceController extends Controller
 {
 
+    private const EXPERIENCES_SHOW = 6;
+
     public function index()
     {
-        return view("experiences");
+        $keyword = request()->get("keyword");
+
+        $experiences = Experience::with("user")
+                        ->where("title", "LIKE", "%{$keyword}%")
+                        ->orWhere("description", "LIKE", "%{$keyword}%")
+                        ->paginate(self::EXPERIENCES_SHOW);
+
+        return view("experiences.index", compact("experiences"));
+        
     }
 
     public function create()
