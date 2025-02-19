@@ -19,13 +19,9 @@ Route::get('/recipes/{id}', function () {
     return view('recipes.show');
 })->name("recipes.show");
 
-Route::get('/experiences', function () {
-    return view('experiences.index');
-})->name("experiences.index");
+Route::get('/experiences', [ExperienceController::class, 'index'])->name("experiences.index");
 
-Route::get('/experiences/create', function () {
-    return view('experiences.create');
-})->name("experiences.create");
+Route::get('/experiences/create', [ExperienceController::class, 'create'])->name("experiences.create");
 
 Route::middleware('auth')->post('/experiences/store', [ExperienceController::class, 'store'])->name("experiences.store");
 
