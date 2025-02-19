@@ -16,7 +16,8 @@ class Experience extends Model
     protected $fillable = [
         'title',
         'description',
-        'user_id'
+        'image',
+        'user_id',
     ];
 
     // Getters
