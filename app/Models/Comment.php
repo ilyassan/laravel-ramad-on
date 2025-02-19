@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Comment extends Model
 {
@@ -18,13 +19,18 @@ class Comment extends Model
         'experience_id',
     ];
 
-    public function recipe()
+    public function recipe(): BelongsTo
     {
         return $this->belongsTo(Recipe::class);
     }
 
-    public function experience()
+    public function experience(): BelongsTo
     {
         return $this->belongsTo(Experience::class);
+    }
+
+    public function user(): BelongsTo
+    {
+        return $this->belongsTo(User::class);
     }
 }

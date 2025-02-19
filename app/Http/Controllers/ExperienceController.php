@@ -24,6 +24,13 @@ class ExperienceController extends Controller
         
     }
 
+    public function show($id)
+    {
+        $experience = Experience::with(["comments", "comments.user"])->find($id);
+        
+        return view("experiences.show", compact("experience"));
+    }
+
     public function create()
     {
         return view("experiences.create");
