@@ -54,6 +54,6 @@ class ExperienceController extends Controller
         // Create the experience
         Experience::create($data);
         
-        return back()->with("success", "Your experiences has been published successfully.");
+        return back()->with("success", "Your experience has been published successfully.");
     }
 }
