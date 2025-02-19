@@ -36,6 +36,11 @@ class Recipe extends Model
         return $this->description;
     }
 
+    public function getImage()
+    {
+        return $this->image ? asset("storage/" . $this->image) : "https://placehold.co/600x400";
+    }
+
     // Relationships
     public function comments(): HasMany
     {

@@ -9,6 +9,21 @@ use Illuminate\Support\Facades\Auth;
 
 class RecipeController extends Controller
 {
+    public function index()
+    {
+        $category_id = request()->get("category_id");
+
+        if ($category_id){
+            $recipes = Recipe::with("category")->where("category_id", $category_id)->get();
+        }
+        else{
+            $recipes = Recipe::with("category")->get();
+        }
+
+        $categories = Category::all();
+
+        return view("recipes.index", compact("recipes", "categories"));
+    }
     public function create()
     {
         $categories = Category::all();

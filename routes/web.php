@@ -9,9 +9,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', HomeController::class)->name("home");
 
-Route::get('/recipes', function () {
-    return view('recipes.index');
-})->name("recipes.index");
+Route::get('/recipes', [RecipeController::class, "index"])->name("recipes.index");
 
 Route::get('/recipes/create', [RecipeController::class, "create"])->name("recipes.create");
 
