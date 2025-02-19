@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ExperienceController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -25,6 +26,8 @@ Route::get('/experiences', function () {
 Route::get('/experiences/create', function () {
     return view('experiences.create');
 })->name("experiences.create");
+
+Route::middleware('auth')->post('/experiences/store', [ExperienceController::class, 'store'])->name("experiences.store");
 
 Route::get('/experiences/{id}', function () {
     return view('experiences.show');

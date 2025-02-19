@@ -147,7 +147,14 @@
 
         <!-- Include SweetAlert2 only once -->
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-        @if (isset($error))
+
+        @php
+            $error = session()->has("error") ? session()->get("error") : (isset($error) ? $error : null);
+            $success = session()->has("success") ? session()->get("success") : (isset($success) ? $success : null);
+            $warning = session()->has("warning") ? session()->get("warning") : (isset($warning) ? $warning : null);
+        @endphp
+
+        @if (isset($error) && !empty($error))
             <script>
                 let message = "{{ $error }}";
                 Swal.fire({
@@ -158,7 +165,7 @@
             </script>
         @endif
 
-        @if (isset($success))
+        @if (isset($success) && !empty($success))
             <script>
                 let message = "{{ $success }}";
                 Swal.fire({
@@ -169,7 +176,7 @@
             </script>
         @endif
 
-        @if (isset($warning))
+        @if (isset($warning) && !empty($success))
             <script>
                 let message = "{{ $warning }}";
                 Swal.fire({
