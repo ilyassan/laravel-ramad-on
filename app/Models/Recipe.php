@@ -18,6 +18,7 @@ class Recipe extends Model
         'description',
         'category_id',
         'user_id',
+        'image',
     ];
 
     // Getters
